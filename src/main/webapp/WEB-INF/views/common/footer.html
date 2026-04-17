@@ -1,0 +1,9 @@
+<div th:fragment="footer">
+    <footer class="footer">
+        <p>
+            실습 수행:
+            <span th:text="${#temporals.format(#temporals.createNow(), 'yyyy-MM-dd HH:mm:ss')}"></span>
+            | 학번: 2291005 | 성명: 소은서
+        </p>
+    </footer>
+</div>
