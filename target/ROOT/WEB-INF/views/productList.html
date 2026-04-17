@@ -42,6 +42,40 @@
             padding: 10px 0;
             border-top: 1px solid #dee2e6;
         }
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-box input,
+        .search-box select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .search-box button {
+            padding: 8px 16px;
+            background: #4a90d9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background: #357abd;
+        }
+        .empty-result {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border: 1px dashed #ccc;
+            border-radius: 6px;
+            color: #777;
+            margin-top: 20px;
+        }
 
         body {
             padding-bottom: 60px;
@@ -63,12 +97,10 @@
     </div>
 
     <a class="btn" th:href="@{/products/create}">+ 새 상품 등록</a>
+    <a class="btn btn-secondary" th:href="@{/categories}">카테고리 관리</a>
+    
 
-    <div class="empty-msg" th:if="${#lists.isEmpty(products)}">
-        등록된 상품이 없습니다. 새 상품을 등록해 주세요.
-    </div>
-
-    <form th:action="@{/products}" method="get" style="margin-bottom:20px;">
+    <form th:action="@{/products}" method="get" class="search-box">
 
         <input type="text"
                name="keyword"
@@ -87,8 +119,16 @@
         <button type="submit">검색</button>
     </form>
 
-    <p th:if="${#lists.isEmpty(products)}">
-        검색 결과가 없습니다.
+    <!-- 전체 상품 없을 때 -->
+    <div class="empty-msg"
+         th:if="${#lists.isEmpty(products) and keyword == null and categoryId == null}">
+        등록된 상품이 없습니다. 새 상품을 등록해 주세요.
+    </div>
+
+    <!-- 검색 결과 없음 -->
+    <p class="empty-result"
+       th:if="${#lists.isEmpty(products) and (keyword != null or categoryId != null)}">
+        🔍 검색 결과가 없습니다.
     </p>
 
     <table th:unless="${#lists.isEmpty(products)}">

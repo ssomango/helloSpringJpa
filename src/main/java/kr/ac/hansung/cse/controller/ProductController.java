@@ -58,7 +58,9 @@ public class ProductController {
 
         List<Product> products;
 
-        if (keyword != null && !keyword.isBlank()) {
+        if (keyword != null && !keyword.isBlank() && categoryId != null) {
+            products = productService.searchByNameAndCategory(keyword, categoryId);
+        } else if (keyword != null && !keyword.isBlank()) {
             products = productService.searchByName(keyword);
         } else if (categoryId != null) {
             products = productService.searchByCategory(categoryId);

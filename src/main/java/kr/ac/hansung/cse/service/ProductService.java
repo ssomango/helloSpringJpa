@@ -141,4 +141,8 @@ public class ProductService {
     public List<Product> searchByCategory(Long categoryId) {
         return productRepository.findByCategoryId(categoryId);
     }
+
+    public List<Product> searchByNameAndCategory(String keyword, Long categoryId) {
+        return productRepository.findByNameContainingAndCategory(keyword, categoryId);
+    }
 }

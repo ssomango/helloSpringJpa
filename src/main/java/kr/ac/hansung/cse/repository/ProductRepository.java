@@ -150,4 +150,14 @@ public class ProductRepository {
                 .setParameter("cid", categoryId)
                 .getResultList();
     }
+
+    public List<Product> findByNameContainingAndCategory(String keyword, Long categoryId) {
+        return em.createQuery(
+                        "SELECT p FROM Product p JOIN FETCH p.category " +
+                                "WHERE p.name LIKE :keyword AND p.category.id = :cid",
+                        Product.class)
+                .setParameter("keyword", "%" + keyword + "%")
+                .setParameter("cid", categoryId)
+                .getResultList();
+    }
 }
