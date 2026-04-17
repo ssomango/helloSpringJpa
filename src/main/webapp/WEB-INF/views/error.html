@@ -27,6 +27,21 @@
         .btn:hover { background: #357abd; }
         .btn-gray { background: #6c757d; }
         .btn-gray:hover { background: #545b62; }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+
+            background: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+            border-top: 1px solid #dee2e6;
+        }
+
+        body {
+            padding-bottom: 60px;
+        }
     </style>
 </head>
 <body>
@@ -55,6 +70,8 @@
     </div>
 
     <a class="btn" th:href="@{/products}">← 상품 목록으로 돌아가기</a>
+
+    <div th:replace="common/footer :: footer"></div>
 
 </body>
 </html>

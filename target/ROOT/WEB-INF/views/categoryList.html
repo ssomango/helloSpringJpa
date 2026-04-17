@@ -1,9 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>카테고리 목록</title>
+
+    <style>
+        body { font-family: 'Malgun Gothic', Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #333; }
+
+        h1 { border-bottom: 2px solid #4a90d9; padding-bottom: 10px; color: #2c3e50; }
+
+        .top-bar {
+            margin-bottom: 20px;
+        }
+
+        .btn-add {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #4a90d9;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .btn-add:hover {
+            background: #357abd;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #f8f9fa;
+        }
+
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-delete:hover {
+            background: #c0392b;
+        }
+
+        .message-success {
+            color: #2ecc71;
+        }
+
+        .message-error {
+            color: #e74c3c;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+
+            background: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+            border-top: 1px solid #dee2e6;
+        }
+
+        body {
+            padding-bottom: 60px;
+        }
+    </style>
+</head>
+<body>
+
 <h1>카테고리 목록</h1>
 
-<p th:if="${successMessage}" th:text="${successMessage}"></p>
-<p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+<div class="top-bar">
+    <a class="btn-add" th:href="@{/categories/create}">+ 카테고리 등록</a>
+</div>
 
-<a th:href="@{/categories/create}">+ 카테고리 등록</a>
+<p class="message-success" th:if="${successMessage}" th:text="${successMessage}"></p>
+<p class="message-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
 
 <table>
     <tr>
@@ -17,8 +102,13 @@
         <td th:text="${cat.name}"></td>
         <td>
             <form th:action="@{/categories/{id}/delete(id=${cat.id})}" method="post">
-                <button type="submit">삭제</button>
+                <button type="submit" class="btn-delete">삭제</button>
             </form>
         </td>
     </tr>
 </table>
+
+<div th:replace="common/footer :: footer"></div>
+
+</body>
+</html>

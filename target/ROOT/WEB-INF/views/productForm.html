@@ -26,6 +26,21 @@
         .btn-submit:hover { background: #357abd; }
         .hint { font-size: 0.85em; color: #6c757d; margin-top: 4px; }
         .required { color: #e74c3c; }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+
+            background: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+            border-top: 1px solid #dee2e6;
+        }
+
+        body {
+            padding-bottom: 60px;
+        }
     </style>
 </head>
 <body>
@@ -135,6 +150,8 @@
         </div>
 
     </form>
+
+    <div th:replace="common/footer :: footer"></div>
 
 </body>
 </html>

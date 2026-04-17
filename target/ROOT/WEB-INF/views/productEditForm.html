@@ -36,6 +36,21 @@
         .hint { font-size: 0.85em; color: #6c757d; margin-top: 4px; }
         .required { color: #e74c3c; }
         .editing-badge { display: inline-block; background: #e67e22; color: white; padding: 3px 10px; border-radius: 12px; font-size: 0.8em; margin-left: 8px; vertical-align: middle; }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+
+            background: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+            border-top: 1px solid #dee2e6;
+        }
+
+        body {
+            padding-bottom: 60px;
+        }
     </style>
 </head>
 <body>
@@ -132,7 +147,10 @@
             <button type="submit" class="btn-submit">수정 완료</button>
         </div>
 
+
     </form>
+
+    <div th:replace="common/footer :: footer"></div>
 
 </body>
 </html>
