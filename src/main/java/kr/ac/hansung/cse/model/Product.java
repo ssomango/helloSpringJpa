@@ -131,4 +131,8 @@ public class Product {
         this.price = price;
         this.description = description;
     }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }
